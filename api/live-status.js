@@ -26,7 +26,7 @@ export default async function handler(req, res) {
             }
         } else {
             const html = await response.text();
-            const videoIdMatch = html.match(/"videoId":"([^"]+)"/);
+            const videoIdMatch = html.match(/watch\?v=([^"'&<>\s]+)/);
             if (videoIdMatch) {
                 result.live = true;
                 result.videoId = videoIdMatch[1];
