@@ -1,0 +1,23 @@
+{
+  "name": "rtn-live-channel",
+  "version": "1.0.0",
+  "description": "RTN - Canal de Televisión en Directo con detección automática de YouTube Live",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 8000 -c-1",
+    "start": "npx http-server"
+  },
+  "keywords": [
+    "youtube",
+    "live",
+    "streaming",
+    "tv",
+    "channel",
+    "broadcast"
+  ],
+  "author": "RTN",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.0"
+  }
+}

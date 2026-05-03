@@ -1,0 +1,30 @@
+# Dependencias
+node_modules/
+npm-debug.log
+
+# Archivos de configuración local
+.env
+.env.local
+config.local.js
+
+# Archivos de Sistema
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Videos (si son muy grandes)
+assets/videos/*.mp4
+assets/videos/*.mov
+assets/videos/*.avi
+
+# Otros
+dist/
+build/
+.cache/

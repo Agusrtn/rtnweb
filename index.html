@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTN - Tu Canal de Streaming</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navegación superior -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">RTN</div>
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link">Inicio</a></li>
+                <li><a href="#" class="nav-link">Programas</a></li>
+                <li><a href="#" class="nav-link">En Directo</a></li>
+                <li><a href="#" class="nav-link">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+        
+        <!-- Reproductor principal -->
+        <section class="player-section">
+            <div class="player-wrapper" id="playerWrapper">
+                <!-- Vídeo en bucle (pantalla de espera) -->
+                <div id="loopVideoContainer" class="video-container active">
+                    <video 
+                        id="loopVideo" 
+                        class="video-player" 
+                        autoplay 
+                        loop 
+                        muted 
+                        playsinline>
+                        <source src="" type="video/mp4">
+                    </video>
+                </div>
+
+                <!-- Directo de YouTube -->
+                <div id="liveVideoContainer" class="video-container">
+                    <iframe 
+                        id="youtubePlayer" 
+                        class="youtube-player"
+                        src=""
+                        title="RTN En Directo"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+                <!-- Indicador de "EN DIRECTO" -->
+                <div id="liveIndicator" class="live-indicator hidden">
+                    <div class="live-badge">
+                        <span class="live-dot"></span>
+                        <span class="live-text">EN DIRECTO</span>
+                    </div>
+                </div>
+
+                <!-- Logo superpuesto -->
+                <div class="logo-container">
+                    <svg class="rtn-logo" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="95" fill="none" stroke="#fff" stroke-width="2" opacity="0.8"/>
+                        <text x="100" y="120" font-size="60" font-weight="bold" text-anchor="middle" fill="#fff" font-family="Arial, sans-serif">
+                            rtn.
+                        </text>
+                    </svg>
+                </div>
+
+                <!-- Botón de expandir -->
+                <button class="expand-btn" id="expandBtn" title="Expandir reproductor">
+                    <span>⛶</span>
+                </button>
+            </div>
+
+            <!-- Información del reproductor -->
+            <div class="player-info">
+                <div class="info-left">
+                    <h2 id="programTitle">Pantalla de Espera</h2>
+                    <p id="programDescription">La transmisión comenzará próximamente</p>
+                </div>
+                <div class="info-right">
+                    <span id="statusBadge" class="status-badge offline">PRÓXIMAMENTE</span>
+                    <span id="viewerCount" class="viewer-count" style="display: none;">👁️ <span id="viewers">0</span> viendo</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Secciones de contenido -->
+        <section class="content-section">
+            
+            <!-- Sección 1: Últimos Directos -->
+            <div class="content-category">
+                <div class="category-header">
+                    <h3>Últimos Directos</h3>
+                    <a href="#" class="see-all">Ver todos →</a>
+                </div>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Directo+1" alt="Directo">
+                            <span class="badge-directo">🔴 GRABADO</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Episodio 5 - En Directo desde el Estudio</h4>
+                            <p>RTN Events • Hace 2 días</p>
+                            <p class="duration">45 min de duración</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Directo+2" alt="Directo">
+                            <span class="badge-directo">🔴 GRABADO</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Transmisión Especial - Evento Importante</h4>
+                            <p>RTN Events • Hace 5 días</p>
+                            <p class="duration">1h 20 min de duración</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Directo+3" alt="Directo">
+                            <span class="badge-directo">🔴 GRABADO</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Panel de Expertos - Conversatorio</h4>
+                            <p>RTN Events • Hace 1 semana</p>
+                            <p class="duration">58 min de duración</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Directo+4" alt="Directo">
+                            <span class="badge-directo">🔴 GRABADO</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Entrevista Exclusiva con Invitado Especial</h4>
+                            <p>RTN Events • Hace 2 semanas</p>
+                            <p class="duration">35 min de duración</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Últimos Vídeos -->
+            <div class="content-category">
+                <div class="category-header">
+                    <h3>Últimos Vídeos</h3>
+                    <a href="#" class="see-all">Ver todos →</a>
+                </div>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Video+1" alt="Video">
+                            <span class="duration-badge">12:45</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Tutorial: Cómo Usar Nuestra Plataforma</h4>
+                            <p>RTN Events • Hace 3 días</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Video+2" alt="Video">
+                            <span class="duration-badge">8:32</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Resumen de la Semana - Lo Mejor</h4>
+                            <p>RTN Events • Hace 4 días</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Video+3" alt="Video">
+                            <span class="duration-badge">15:20</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Detrás de Cámaras - Making Of</h4>
+                            <p>RTN Events • Hace 6 días</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Video+4" alt="Video">
+                            <span class="duration-badge">22:15</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Conferencia Completa - Evento Anual</h4>
+                            <p>RTN Events • Hace 1 semana</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 3: Populares -->
+            <div class="content-category">
+                <div class="category-header">
+                    <h3>Populares Ahora</h3>
+                    <a href="#" class="see-all">Ver todos →</a>
+                </div>
+                <div class="content-grid">
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Popular+1" alt="Popular">
+                            <span class="duration-badge">45:00</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Contenido Viral - Millones de Vistas</h4>
+                            <p>RTN Events • Tendencia</p>
+                            <p class="duration">8.5M vistas</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Popular+2" alt="Popular">
+                            <span class="duration-badge">32:10</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Lo Más Visto Esta Semana</h4>
+                            <p>RTN Events • Tendencia</p>
+                            <p class="duration">2.3M vistas</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Popular+3" alt="Popular">
+                            <span class="duration-badge">28:45</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>Recomendado para Ti Basado en Tus Intereses</h4>
+                            <p>RTN Events • Personalizado</p>
+                            <p class="duration">1.1M vistas</p>
+                        </div>
+                    </div>
+
+                    <div class="content-card">
+                        <div class="card-thumbnail">
+                            <img src="https://via.placeholder.com/300x170?text=Popular+4" alt="Popular">
+                            <span class="duration-badge">19:55</span>
+                        </div>
+                        <div class="card-info">
+                            <h4>No Te Pierdas - Contenido Premium</h4>
+                            <p>RTN Events • Exclusivo</p>
+                            <p class="duration">950K vistas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- Panel de control (desarrollo) -->
+    <div id="controlPanel" class="control-panel" style="display: none;">
+        <button id="toggleLiveBtn" class="control-btn">Simular Directo</button>
+        <button id="toggleOfflineBtn" class="control-btn">Simular Offline</button>
+        <button id="logStatusBtn" class="control-btn">Ver Estado</button>
+    </div>
+
+    <!-- Script de configuración -->
+    <script src="config.js"></script>
+    <!-- Script principal -->
+    <script src="script.js"></script>
+</body>
+</html>

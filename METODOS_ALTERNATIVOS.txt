@@ -1,0 +1,87 @@
+<!-- 
+    ALTERNATIVAS PARA DETECTAR SI UN CANAL ESTÁ EN DIRECTO
+    Sin necesidad de YouTube API (método alternativo)
+-->
+
+<!-- 
+
+MÉTODO 1: Verificar estado del canal a través de la página pública
+(Menos confiable, pero sin necesidad de API Key)
+
+Ventajas:
+- No requiere API Key
+- No tiene límites de cuota
+- Funciona cualquier canal público
+
+Desventajas:
+- Más lento
+- Menos preciso
+- Puede cambiar si YouTube modifica su HTML
+
+Solución: Incluir el siguiente código en script.js si quieres intentarlo:
+
+---
+
+async function checkLiveStatusAlternative() {
+    try {
+        const channelUrl = `https://www.youtube.com/@${CONFIG.YOUTUBE_CHANNEL_ID}`;
+        const response = await fetch(channelUrl);
+        const html = await response.text();
+        
+        // Buscar indicadores de directo en el HTML
+        const isLive = html.includes('"isLiveContent":true') || 
+                      html.includes('LIVE') ||
+                      html.includes('EN DIRECTO');
+        
+        return isLive;
+    } catch (error) {
+        console.error('Error al verificar directo (método alternativo):', error);
+        return false;
+    }
+}
+
+---
+
+MÉTODO 2: Usar yt-dlp para verificar estado (requiere servidor Node.js)
+
+Esto es más complejo pero más confiable. Requeriría:
+1. Un servidor Node.js en tu servidor
+2. Instalar: npm install yt-dlp-core
+3. Crear un endpoint que verifique el estado
+
+Ejemplo:
+
+app.get('/api/is-live', async (req, res) => {
+    const ytdl = require('yt-dlp-core');
+    const channelUrl = 'https://www.youtube.com/@TUCANAL';
+    
+    try {
+        const info = await ytdl.getInfo(channelUrl);
+        res.json({ isLive: info.video_details.isLiveContent });
+    } catch (error) {
+        res.json({ isLive: false });
+    }
+});
+
+---
+
+MÉTODO 3: Verificar contra un servidor proxy/simplificado
+
+Algunos servicios como youtube-data.com ofrecen APIs simplificadas.
+
+---
+
+RECOMENDACIÓN:
+Usa YouTube Data API v3 (el método actual en script.js)
+- Es oficial
+- Es confiable
+- Es rápido
+- Tiene límites generosos (10,000 unidades/día)
+
+Si tienes problemas con la API Key:
+1. Verifica que está activa en Google Cloud Console
+2. Verifica que el Channel ID es correcto
+3. Prueba: DEBUG.checkNow() en la consola
+4. Abre la consola de desarrollador (F12) para ver errores
+
+-->
