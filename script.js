@@ -3,6 +3,22 @@
    Lógica de detección de directo y cambio automático
    ======================================== */
 
+// Verificación de seguridad para la configuración
+if (typeof CONFIG === 'undefined') {
+    console.warn('⚠️ config.js no se cargó. Usando configuración de emergencia.');
+    window.CONFIG = {
+        YOUTUBE_CHANNEL_ID: 'UCto7W4AT09ZcOOcONZu7wRA',
+        POLLING_INTERVAL: 30000,
+        DEV_MODE: false,
+        TEXT: {
+            OFFLINE_TITLE: 'OFFLINE',
+            OFFLINE_DESC: 'La transmisión comenzará próximamente',
+            LIVE_TITLE: 'EN DIRECTO',
+            LIVE_DESC: 'Sintoniza nuestro canal en directo ahora',
+        }
+    };
+}
+
 // Estado de la aplicación
 const AppState = {
     isLive: false,
