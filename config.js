@@ -32,12 +32,12 @@ const CONFIG = {
     
     // Textos para los estados
     TEXT: {
-        OFFLINE_TITLE: 'RTN - En Espera',
+        OFFLINE_TITLE: 'OFFLINE',
         OFFLINE_DESC: 'La transmisión comenzará próximamente',
-        LIVE_TITLE: 'RTN - En Directo',
+        LIVE_TITLE: 'EN DIRECTO',
         LIVE_DESC: 'Sintoniza nuestro canal en directo ahora',
     },
     
     // Habilitar panel de control para desarrollo
-    DEV_MODE: true, // true para ver botones de prueba
+    DEV_MODE: false, // Cambiado a false para producción
 };
